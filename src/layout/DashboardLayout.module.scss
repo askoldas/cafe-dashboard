@@ -61,4 +61,8 @@
 .content {
   padding: 1rem;
   background: #f7f7f7;
+
+  @media (max-width: 768px) {
+    margin-top: 56px; // Match the height of the mobile topbar
+  }
 }

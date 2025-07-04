@@ -16,13 +16,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Mobile toggle button */}
-      <button className={styles.mobileToggle} onClick={toggleMenu}>
-        <Menu size={24} />
-      </button>
+      {/* Topbar always shown on mobile */}
+      <div className={styles.topbar}>
+        <button className={styles.menuBtn} onClick={toggleMenu}>
+          <Menu size={24} />
+        </button>
+        <h1 className={styles.title}>Cafe Dashboard</h1>
+      </div>
 
-      {/* Sidebar */}
-      <aside className={`${styles.navbar} ${mobileOpen ? styles.open : ''}`}>
+      {/* Sidebar (desktop) */}
+      <aside className={styles.sidebar}>
         <div className={styles.title}>Cafe Dashboard</div>
         <nav className={styles.nav}>
           {navItems.map(item => (
@@ -32,7 +35,6 @@ const Navbar = () => {
               className={({ isActive }) =>
                 isActive ? `${styles.link} ${styles.active}` : styles.link
               }
-              onClick={() => setMobileOpen(false)} // closes menu on nav
             >
               {item.label}
             </NavLink>
@@ -40,9 +42,22 @@ const Navbar = () => {
         </nav>
       </aside>
 
-      {/* Mobile backdrop */}
+      {/* Mobile dropdown menu */}
       {mobileOpen && (
-        <div className={styles.overlay} onClick={() => setMobileOpen(false)} />
+        <div className={styles.mobileMenu}>
+          {navItems.map(item => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive }) =>
+                isActive ? `${styles.mobileLink} ${styles.active}` : styles.mobileLink
+              }
+              onClick={() => setMobileOpen(false)}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </div>
       )}
     </>
   )

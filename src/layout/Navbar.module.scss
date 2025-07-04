@@ -1,4 +1,34 @@
-.navbar {
+.topbar {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.sidebar {
   width: 240px;
   background: #ffffff;
   border-right: 1px solid #e0e0e0;
@@ -7,54 +37,48 @@
   position: sticky;
   top: 0;
   overflow-y: auto;
-  transition: transform 0.3s ease;
-  z-index: 100;
 
   @media (max-width: 768px) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    transform: translateX(-100%);
-    width: 240px;
-    background: #ffffff;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  }
-
-  &.open {
-    transform: translateX(0);
+    display: none;
   }
 }
 
-
-.mobileToggle {
+.mobileMenu {
   display: none;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 110;
-  background: none;
-  border: none;
-  cursor: pointer;
 
   @media (max-width: 768px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 56px; // height of topbar
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 90;
+    border-bottom: 1px solid #ddd;
+    animation: slideDown 0.3s ease forwards;
   }
 }
 
-.title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.nav {
+.nav, .mobileLink {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.link {
+.link,
+.mobileLink {
   padding: 0.5rem 1rem;
   color: #333;
   text-decoration: none;
@@ -69,17 +93,5 @@
   &.active {
     background-color: #e6f0ff;
     color: #225;
-  }
-}
-
-.overlay {
-  display: none;
-
-  @media (max-width: 768px) {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 90;
   }
 }
