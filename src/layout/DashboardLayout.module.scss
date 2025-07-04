@@ -1,0 +1,30 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  background: #f7f7f7;
+  position: relative;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbarSpacer {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    height: 56px; // match your mobile header height
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
