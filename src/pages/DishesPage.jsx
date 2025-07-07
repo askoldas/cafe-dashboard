@@ -3,8 +3,8 @@ const DishesPage = () => {
 
   return (
     <div>
-      <h2>Dishes</h2>
-      <p>List and configure your menu items.</p>
+      <h2>Блюда</h2>
+      <p>Список и настройка позиций меню</p>
 
       <ul>
         {dummyItems.map((item, index) => (

@@ -4,9 +4,11 @@ import { Menu } from 'lucide-react'
 import styles from './Navbar.module.scss'
 
 const navItems = [
-  { label: 'Dashboard', to: '/' },
-  { label: 'Products', to: '/products' },
-  { label: 'Dishes', to: '/dishes' },
+  { label: 'Обзор', to: '/' },
+  { label: 'Закупки', to: '/purchases' },
+  { label: 'Продажи', to: '/sales' },
+  { label: 'Блюда', to: '/dishes' },
+  { label: 'Ингредиенты', to: '/products' },
 ]
 
 const Navbar = () => {
@@ -21,12 +23,12 @@ const Navbar = () => {
         <button className={styles.menuBtn} onClick={toggleMenu}>
           <Menu size={24} />
         </button>
-        <h1 className={styles.title}>Cafe Dashboard</h1>
+        <h1 className={styles.title}>RubinRub</h1>
       </div>
 
       {/* Sidebar (desktop) */}
       <aside className={styles.sidebar}>
-        <div className={styles.title}>Cafe Dashboard</div>
+        <div className={styles.title}>RubinRub</div>
         <nav className={styles.nav}>
           {navItems.map(item => (
             <NavLink

@@ -2,8 +2,8 @@
 const Home = () => {
   return (
     <div>
-      <h2>Welcome to the Cafe Dashboard</h2>
-      <p>This is the main overview screen.</p>
+      <h2>Обзор</h2>
+      <p>Отчёты и сводки</p>
     </div>
   )
 }
