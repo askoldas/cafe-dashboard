@@ -8,52 +8,79 @@ import {
   Timestamp
 } from 'firebase/firestore'
 import { db } from '@/firebase'
-import PurchaseCategoryBlock from './PurchaseCategoryBlock'
+import PurchaseItem from './PurchaseItem' // renamed component
 
 const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
-  const [categories, setCategories] = useState([])
-  const [items, setItems] = useState({})
+  const [productsGrouped, setProductsGrouped] = useState([])
+  const [productsFlat, setProductsFlat] = useState([])
+  const [items, setItems] = useState([])
   const [saving, setSaving] = useState(false)
 
-  // Fetch categories
+  // Fetch categories and ingredients
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const snapshot = await getDocs(collection(db, 'product_categories'))
-        const list = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
+        const catSnap = await getDocs(collection(db, 'product_categories'))
+        const ingSnap = await getDocs(collection(db, 'ingredients'))
+
+        const categories = catSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        const ingredients = ingSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+
+        // Flat product list with unit info
+        const flatList = ingredients.map(ing => ({
+          id: ing.id,
+          name: ing.name,
+          unit: ing.unit
         }))
-        setCategories(list)
+        setProductsFlat(flatList)
+
+        // Grouped list for dropdown
+        const grouped = categories.map(cat => ({
+          categoryId: cat.id,
+          categoryName: cat.name,
+          products: ingredients
+            .filter(ing => ing.categoryId === cat.id)
+            .map(ing => ({ id: ing.id, name: ing.name }))
+        })).filter(group => group.products.length > 0)
+
+        setProductsGrouped(grouped)
       } catch (err) {
-        console.error('Ошибка при загрузке категорий:', err)
+        console.error('Ошибка при загрузке данных:', err)
       }
     }
 
-    fetchCategories()
+    fetchData()
   }, [])
 
-  // If editing, preload existing items
+  // Load existing items if editing
   useEffect(() => {
     if (existingPurchase) {
-      const initialItems = {}
-      existingPurchase.items.forEach(item => {
-        initialItems[item.productId] = item
-      })
-      setItems(initialItems)
+      setItems([...existingPurchase.items, {}]) // add empty row
+    } else {
+      setItems([{}]) // start with one empty row
     }
   }, [existingPurchase])
 
-  const handleProductChange = entry => {
-    setItems(prev => ({
-      ...prev,
-      [entry.productId]: entry
-    }))
+  const handleLineChange = (index, updated) => {
+    setItems(prev => {
+      const copy = [...prev]
+      copy[index] = updated
+
+      const isLast = index === prev.length - 1
+      const filled = updated.productId && updated.quantity > 0
+
+      if (isLast && filled) {
+        return [...copy, {}]
+      }
+
+      return copy
+    })
   }
 
   const handleSave = async () => {
-    const entries = Object.values(items).filter(i => i.quantity > 0)
-    if (entries.length === 0) {
+    const validItems = items.filter(i => i.productId && i.quantity > 0)
+
+    if (validItems.length === 0) {
       alert('Добавьте хотя бы один продукт')
       return
     }
@@ -62,11 +89,11 @@ const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
     try {
       if (existingPurchase) {
         const ref = doc(db, 'purchases', existingPurchase.id)
-        await updateDoc(ref, { items: entries })
+        await updateDoc(ref, { items: validItems })
       } else {
         await addDoc(collection(db, 'purchases'), {
           date: Timestamp.now(),
-          items: entries
+          items: validItems
         })
       }
 
@@ -80,20 +107,35 @@ const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
     }
   }
 
+  const totalSum = items
+    .filter(i => i.totalPrice && !isNaN(i.totalPrice))
+    .reduce((sum, i) => sum + parseFloat(i.totalPrice), 0)
+    .toFixed(2)
+
   return (
     <div style={modalStyle.overlay}>
       <div style={modalStyle.container}>
         <h2>{existingPurchase ? 'Редактировать закупку' : 'Новая закупка'}</h2>
 
         <div style={{ maxHeight: '400px', overflowY: 'auto', marginBottom: '1rem' }}>
-          {categories.map(cat => (
-            <PurchaseCategoryBlock
-              key={cat.id}
-              category={cat}
-              onProductChange={handleProductChange}
-              existingItems={items}
+          {items.map((item, idx) => (
+            <PurchaseItem
+              key={idx}
+              productsGrouped={productsGrouped}
+              productsFlat={productsFlat}
+              initialData={item}
+              onChange={updated => handleLineChange(idx, updated)}
             />
           ))}
+        </div>
+
+        <div style={{
+          textAlign: 'right',
+          fontWeight: 'bold',
+          marginBottom: '1rem',
+          fontSize: '1.1rem'
+        }}>
+          Общая сумма: {totalSum} €
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}>

@@ -29,15 +29,18 @@ const PurchasesPage = () => {
   const formatDate = timestamp => {
     if (!timestamp?.toDate) return ''
     const date = timestamp.toDate()
-    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString()
+    return date.toLocaleDateString() // Only date, no time
   }
+
+  const getTotal = items =>
+    items?.reduce((sum, i) => sum + (parseFloat(i.totalPrice) || 0), 0).toFixed(2)
 
   const openNewModal = () => {
     setEditingPurchase(null)
     setModalOpen(true)
   }
 
-  const openEditModal = (purchase) => {
+  const openEditModal = purchase => {
     setEditingPurchase(purchase)
     setModalOpen(true)
   }
@@ -68,7 +71,7 @@ const PurchasesPage = () => {
               onClick={() => openEditModal(p)}
             >
               <strong>{formatDate(p.date)}</strong><br />
-              {p.items.length} позиций
+              {p.items.length} позиций – {getTotal(p.items)} €
             </li>
           ))}
         </ul>
