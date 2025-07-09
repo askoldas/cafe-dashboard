@@ -5,9 +5,11 @@ import styles from './Navbar.module.scss'
 
 const navItems = [
   { label: 'Обзор', to: '/' },
-  { label: 'Закупки', to: '/purchases' },
   { label: 'Продажи', to: '/sales' },
+  { label: 'Расходы', to: '/expenses' },
+  { label: 'Закупки', to: '/purchases' },
   { label: 'Блюда', to: '/dishes' },
+  { label: 'Комплексные обеды', to: '/combos' },
   { label: 'Ингредиенты', to: '/products' },
 ]
 

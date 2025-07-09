@@ -8,7 +8,8 @@ import {
   Timestamp
 } from 'firebase/firestore'
 import { db } from '@/firebase'
-import PurchaseItem from './PurchaseItem' // renamed component
+import PurchaseItem from './PurchaseItem'
+import { sortByOrder } from '@/utils/sortByOrder'
 
 const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
   const [productsGrouped, setProductsGrouped] = useState([])
@@ -16,7 +17,6 @@ const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
   const [items, setItems] = useState([])
   const [saving, setSaving] = useState(false)
 
-  // Fetch categories and ingredients
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,22 +26,32 @@ const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
         const categories = catSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
         const ingredients = ingSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
 
-        // Flat product list with unit info
-        const flatList = ingredients.map(ing => ({
+        const sortedCategories = sortByOrder(categories)
+        const sortedIngredients = sortByOrder(ingredients)
+
+        // Flat product list for unit lookup
+        const flatList = sortedIngredients.map(ing => ({
           id: ing.id,
           name: ing.name,
           unit: ing.unit
         }))
         setProductsFlat(flatList)
 
-        // Grouped list for dropdown
-        const grouped = categories.map(cat => ({
-          categoryId: cat.id,
-          categoryName: cat.name,
-          products: ingredients
-            .filter(ing => ing.categoryId === cat.id)
-            .map(ing => ({ id: ing.id, name: ing.name }))
-        })).filter(group => group.products.length > 0)
+        // Grouped product list for dropdown
+        const grouped = sortedCategories.map(cat => {
+          const productsInCategory = sortByOrder(
+            sortedIngredients.filter(ing => ing.categoryId === cat.id)
+          )
+
+          return {
+            categoryId: cat.id,
+            categoryName: cat.name,
+            products: productsInCategory.map(ing => ({
+              id: ing.id,
+              name: ing.name
+            }))
+          }
+        }).filter(group => group.products.length > 0)
 
         setProductsGrouped(grouped)
       } catch (err) {
@@ -52,12 +62,11 @@ const PurchaseModal = ({ onClose, onSaved, existingPurchase }) => {
     fetchData()
   }, [])
 
-  // Load existing items if editing
   useEffect(() => {
     if (existingPurchase) {
-      setItems([...existingPurchase.items, {}]) // add empty row
+      setItems([...existingPurchase.items, {}])
     } else {
-      setItems([{}]) // start with one empty row
+      setItems([{}])
     }
   }, [existingPurchase])
 

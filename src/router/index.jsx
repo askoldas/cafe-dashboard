@@ -7,6 +7,8 @@ import ProductsPage from '@/pages/ProductsPage'
 import DishesPage from '@/pages/DishesPage'
 import PurchasesPage from '@/pages/PurchasesPage'
 import SalesPage from '@/pages/SalesPage'
+import ExpensesPage from '@/pages/ExpensesPage'
+import CombosPage from '@/pages/CombosPage'
 import NotFound from '@/pages/NotFound'
 
 const router = createBrowserRouter([
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: 'dishes', element: <DishesPage /> },
       { path: 'purchases', element: <PurchasesPage /> },
       { path: 'sales', element: <SalesPage /> },
+      { path: 'expenses', element: <ExpensesPage /> },
+      { path: 'combos', element: <CombosPage /> },
       { path: '*', element: <NotFound /> }, // catch-all inside layout
     ],
   },
