@@ -26,7 +26,12 @@ const DishModal = ({ onClose, onSaved, existingDish, categoryId }) => {
       const categories = sortByOrder(catSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })))
       const ingredients = sortByOrder(ingSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })))
 
-      setProductsFlat(ingredients.map(i => ({ id: i.id, name: i.name, unit: i.unit, price: i.basePrice })))
+      setProductsFlat(ingredients.map(i => ({
+        id: i.id,
+        name: i.name,
+        unit: i.unit,
+        price: i.basePrice
+      })))
 
       setProductsGrouped(
         categories.map(cat => ({
@@ -66,17 +71,19 @@ const DishModal = ({ onClose, onSaved, existingDish, categoryId }) => {
     }
 
     setSaving(true)
+    const dishData = {
+      name,
+      portions,
+      categoryId,
+      ingredients: validIngredients
+    }
+
     try {
       if (existingDish) {
         const ref = doc(db, 'dishes', existingDish.id)
-        await updateDoc(ref, { name, portions, ingredients: validIngredients })
+        await updateDoc(ref, dishData)
       } else {
-        await addDoc(collection(db, 'dishes'), {
-          name,
-          portions,
-          categoryId,
-          ingredients: validIngredients
-        })
+        await addDoc(collection(db, 'dishes'), dishData)
       }
 
       onSaved()

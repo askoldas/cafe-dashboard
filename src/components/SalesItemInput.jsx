@@ -1,10 +1,41 @@
 import { useEffect, useState } from 'react'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '@/firebase'
 
 const SalesItemInput = ({ allDishes, allCombos, initialData = {}, onChange }) => {
-  const [type, setType] = useState(initialData.type || 'dish')
-  const [itemId, setItemId] = useState(initialData.itemId || '')
+  const [selectedValue, setSelectedValue] = useState(() => {
+    if (initialData.type && initialData.itemId) {
+      return `${initialData.type}:${initialData.itemId}`
+    }
+    return ''
+  })
   const [quantity, setQuantity] = useState(initialData.quantity || '')
+  const [categories, setCategories] = useState([])
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const snap = await getDocs(collection(db, 'dish_categories'))
+      const list = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+      setCategories(list)
+    }
+    fetchCategories()
+  }, [])
+
+  useEffect(() => {
+    console.log('--- DEBUG DISH CATEGORY MATCHING ---')
+    allDishes.forEach(d => {
+      const raw = d.categoryId
+      const interpreted = typeof raw === 'string' ? raw : raw?.id
+      console.log('Dish:', d.name, '| categoryId:', raw, '| interpreted:', interpreted)
+    })
+
+    console.log('--- AVAILABLE CATEGORIES ---')
+    categories.forEach(c => {
+      console.log('Category:', c.name, '| id:', c.id)
+    })
+  }, [allDishes, categories])
+
+  const [type, itemId] = selectedValue.split(':')
   const selectedItem =
     type === 'dish' ? allDishes.find(d => d.id === itemId) : allCombos.find(c => c.id === itemId)
 
@@ -36,19 +67,44 @@ const SalesItemInput = ({ allDishes, allCombos, initialData = {}, onChange }) =>
 
   return (
     <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', alignItems: 'center' }}>
-      <select value={type} onChange={e => {
-        setType(e.target.value)
-        setItemId('')
-      }}>
-        <option value="dish">Блюдо</option>
-        <option value="combo">Комбо</option>
-      </select>
+      <select
+        value={selectedValue}
+        onChange={e => setSelectedValue(e.target.value)}
+        style={{ minWidth: '200px' }}
+      >
+        <option value="">Выберите блюдо или комбо</option>
 
-      <select value={itemId} onChange={e => setItemId(e.target.value)}>
-        <option value="">Выберите {type === 'dish' ? 'блюдо' : 'комбо'}</option>
-        {(type === 'dish' ? allDishes : allCombos).map(i => (
-          <option key={i.id} value={i.id}>{i.name}</option>
-        ))}
+        {categories.map(cat => {
+          const dishesInCat = allDishes.filter(d => {
+            const catId = typeof d.categoryId === 'string'
+              ? d.categoryId
+              : d.categoryId?.id
+            return catId === cat.id
+          })
+
+          console.log(`Category ${cat.name} (${cat.id}) matched dishes:`, dishesInCat.map(d => d.name))
+
+          if (dishesInCat.length === 0) {
+            console.log(`No matches for category "${cat.name}"`)
+            return null
+          }
+
+          return (
+            <optgroup key={cat.id} label={cat.name}>
+              {dishesInCat.map(d => (
+                <option key={d.id} value={`dish:${d.id}`}>{d.name}</option>
+              ))}
+            </optgroup>
+          )
+        })}
+
+        {allCombos.length > 0 && (
+          <optgroup label="Комбо">
+            {allCombos.map(c => (
+              <option key={c.id} value={`combo:${c.id}`}>{c.name}</option>
+            ))}
+          </optgroup>
+        )}
       </select>
 
       <input
