@@ -1,0 +1,68 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.navbar {
+  width: 240px;
+  flex-shrink: 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-right: 1px solid #ddd;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+}
+
+.open {
+  @media (max-width: 768px) {
+    transform: translateX(0);
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    z-index: 50;
+  }
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.content {
+  padding: 1rem;
+  background: #f7f7f7;
+
+  @media (max-width: 768px) {
+    margin-top: 56px; // Match the height of the mobile topbar
+  }
+}

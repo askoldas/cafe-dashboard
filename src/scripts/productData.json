@@ -1,0 +1,836 @@
+ {
+  "bakery": [
+    {
+      "name": "Багет",
+      "unit": "шт",
+      "basePrice": 1.1,
+      "order": 1
+    },
+    {
+      "name": "Булочки для бургеров",
+      "unit": "шт",
+      "basePrice": 0.4,
+      "order": 2
+    },
+    {
+      "name": "Лаваш тонкий",
+      "unit": "шт",
+      "basePrice": 1.0,
+      "order": 3
+    },
+    {
+      "name": "Хлеб белый",
+      "unit": "шт",
+      "basePrice": 1.0,
+      "order": 4
+    },
+    {
+      "name": "Хлеб ржаной",
+      "unit": "шт",
+      "basePrice": 1.2,
+      "order": 5
+    }
+  ],
+  "dairy": [
+    {
+      "name": "Йогурт натуральный",
+      "unit": "кг",
+      "basePrice": 2.9,
+      "order": 1
+    },
+    {
+      "name": "Масло сливочное 82%",
+      "unit": "кг",
+      "basePrice": 7.5,
+      "order": 2
+    },
+    {
+      "name": "Молоко",
+      "unit": "л",
+      "basePrice": 1.15,
+      "order": 3
+    },
+    {
+      "name": "Молоко сгущённое",
+      "unit": "банка",
+      "basePrice": 1.4,
+      "order": 4
+    },
+    {
+      "name": "Сливки 10%",
+      "unit": "л",
+      "basePrice": 2.4,
+      "order": 5
+    },
+    {
+      "name": "Сливки 33%",
+      "unit": "л",
+      "basePrice": 4.2,
+      "order": 6
+    },
+    {
+      "name": "Сметана 20%",
+      "unit": "кг",
+      "basePrice": 2.6,
+      "order": 7
+    },
+    {
+      "name": "Сыр Гауда",
+      "unit": "кг",
+      "basePrice": 6.8,
+      "order": 8
+    },
+    {
+      "name": "Сыр Пармезан",
+      "unit": "кг",
+      "basePrice": 9.8,
+      "order": 9
+    },
+    {
+      "name": "Сыр сливочный",
+      "unit": "кг",
+      "basePrice": 5.5,
+      "order": 10
+    },
+    {
+      "name": "Творог",
+      "unit": "кг",
+      "basePrice": 4.0,
+      "order": 11
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Вода газированная",
+      "unit": "л",
+      "basePrice": 0.7,
+      "order": 1
+    },
+    {
+      "name": "Вода питьевая",
+      "unit": "л",
+      "basePrice": 0.6,
+      "order": 2
+    },
+    {
+      "name": "Кола",
+      "unit": "л",
+      "basePrice": 1.5,
+      "order": 3
+    },
+    {
+      "name": "Сироп карамельный",
+      "unit": "л",
+      "basePrice": 3.9,
+      "order": 4
+    },
+    {
+      "name": "Сироп клубничный",
+      "unit": "л",
+      "basePrice": 3.9,
+      "order": 5
+    },
+    {
+      "name": "Сироп ореховый",
+      "unit": "л",
+      "basePrice": 4.1,
+      "order": 6
+    },
+    {
+      "name": "Сок апельсиновый",
+      "unit": "л",
+      "basePrice": 1.8,
+      "order": 7
+    },
+    {
+      "name": "Сок яблочный",
+      "unit": "л",
+      "basePrice": 1.6,
+      "order": 8
+    },
+    {
+      "name": "Тоник",
+      "unit": "л",
+      "basePrice": 1.5,
+      "order": 9
+    }
+  ],
+  "frozen": [
+    {
+      "name": "Брокколи замороженные",
+      "unit": "кг",
+      "basePrice": 3.2,
+      "order": 1
+    },
+    {
+      "name": "Грибы замороженные",
+      "unit": "кг",
+      "basePrice": 3.8,
+      "order": 2
+    },
+    {
+      "name": "Картофель фри",
+      "unit": "кг",
+      "basePrice": 2.6,
+      "order": 3
+    },
+    {
+      "name": "Овощная смесь",
+      "unit": "кг",
+      "basePrice": 2.8,
+      "order": 4
+    },
+    {
+      "name": "Фрукты замороженные",
+      "unit": "кг",
+      "basePrice": 4.2,
+      "order": 5
+    },
+    {
+      "name": "Шпинат замороженный",
+      "unit": "кг",
+      "basePrice": 2.9,
+      "order": 6
+    },
+    {
+      "name": "Ягоды замороженные",
+      "unit": "кг",
+      "basePrice": 4.5,
+      "order": 7
+    }
+  ],
+  "fruits-veg": [
+    {
+      "name": "Авокадо",
+      "unit": "шт",
+      "basePrice": 1.2,
+      "order": 1
+    },
+    {
+      "name": "Бананы",
+      "unit": "кг",
+      "basePrice": 1.14,
+      "order": 2
+    },
+    {
+      "name": "Болгарский перец",
+      "unit": "кг",
+      "basePrice": 4.0,
+      "order": 3
+    },
+    {
+      "name": "Картофель",
+      "unit": "кг",
+      "basePrice": 0.94,
+      "order": 4
+    },
+    {
+      "name": "Лимоны",
+      "unit": "кг",
+      "basePrice": 2.5,
+      "order": 5
+    },
+    {
+      "name": "Лук зелёный",
+      "unit": "пучок",
+      "basePrice": 0.5,
+      "order": 6
+    },
+    {
+      "name": "Лук репчатый",
+      "unit": "кг",
+      "basePrice": 1.1,
+      "order": 7
+    },
+    {
+      "name": "Морковь",
+      "unit": "кг",
+      "basePrice": 1.2,
+      "order": 8
+    },
+    {
+      "name": "Огурцы маринованные",
+      "unit": "кг",
+      "basePrice": 3.0,
+      "order": 9
+    },
+    {
+      "name": "Огурцы свежие",
+      "unit": "кг",
+      "basePrice": 2.5,
+      "order": 10
+    },
+    {
+      "name": "Огурцы солёные",
+      "unit": "кг",
+      "basePrice": 3.0,
+      "order": 11
+    },
+    {
+      "name": "Петрушка",
+      "unit": "пучок",
+      "basePrice": 0.5,
+      "order": 12
+    },
+    {
+      "name": "Помидоры",
+      "unit": "кг",
+      "basePrice": 4.25,
+      "order": 13
+    },
+    {
+      "name": "Салат Айсберг",
+      "unit": "шт",
+      "basePrice": 1.0,
+      "order": 14
+    },
+    {
+      "name": "Укроп",
+      "unit": "пучок",
+      "basePrice": 0.5,
+      "order": 15
+    },
+    {
+      "name": "Яблоки",
+      "unit": "кг",
+      "basePrice": 1.63,
+      "order": 16
+    }
+  ],
+  "grains": [
+    {
+      "name": "Булгур",
+      "unit": "кг",
+      "basePrice": 2.4,
+      "order": 1
+    },
+    {
+      "name": "Гречка",
+      "unit": "кг",
+      "basePrice": 2.1,
+      "order": 2
+    },
+    {
+      "name": "Кус-кус",
+      "unit": "кг",
+      "basePrice": 2.3,
+      "order": 3
+    },
+    {
+      "name": "Макароны",
+      "unit": "кг",
+      "basePrice": 2.0,
+      "order": 4
+    },
+    {
+      "name": "Нут",
+      "unit": "кг",
+      "basePrice": 3.0,
+      "order": 5
+    },
+    {
+      "name": "Овсяные хлопья",
+      "unit": "кг",
+      "basePrice": 1.8,
+      "order": 6
+    },
+    {
+      "name": "Рис",
+      "unit": "кг",
+      "basePrice": 1.6,
+      "order": 7
+    },
+    {
+      "name": "Спагетти",
+      "unit": "кг",
+      "basePrice": 1.9,
+      "order": 8
+    },
+    {
+      "name": "Фасоль",
+      "unit": "кг",
+      "basePrice": 2.8,
+      "order": 9
+    }
+  ],
+  "household": [
+    {
+      "name": "Губки кухонные",
+      "unit": "упаковка",
+      "basePrice": 1.0,
+      "order": 1
+    },
+    {
+      "name": "Мешки для мусора",
+      "unit": "рулон",
+      "basePrice": 1.5,
+      "order": 2
+    },
+    {
+      "name": "Моющее средство для посуды",
+      "unit": "л",
+      "basePrice": 2.1,
+      "order": 3
+    },
+    {
+      "name": "Перчатки резиновые",
+      "unit": "пара",
+      "basePrice": 0.8,
+      "order": 4
+    },
+    {
+      "name": "Полотенца бумажные",
+      "unit": "рулон",
+      "basePrice": 1.1,
+      "order": 5
+    },
+    {
+      "name": "Салфетки универсальные",
+      "unit": "упаковка",
+      "basePrice": 1.2,
+      "order": 6
+    },
+    {
+      "name": "Средство для полов",
+      "unit": "л",
+      "basePrice": 1.8,
+      "order": 7
+    }
+  ],
+  "meat": [
+    {
+      "name": "Бекон сырокопчёный",
+      "unit": "кг",
+      "basePrice": 11.0,
+      "order": 1
+    },
+    {
+      "name": "Ветчина варёная",
+      "unit": "кг",
+      "basePrice": 7.5,
+      "order": 2
+    },
+    {
+      "name": "Говядина (лопатка)",
+      "unit": "кг",
+      "basePrice": 9.2,
+      "order": 3
+    },
+    {
+      "name": "Говяжий (фарш)",
+      "unit": "кг",
+      "basePrice": 8.6,
+      "order": 4
+    },
+    {
+      "name": "Куриное (филе)",
+      "unit": "кг",
+      "basePrice": 5.5,
+      "order": 5
+    },
+    {
+      "name": "Куриные бёдра",
+      "unit": "кг",
+      "basePrice": 4.8,
+      "order": 6
+    },
+    {
+      "name": "Куриные крылья",
+      "unit": "кг",
+      "basePrice": 3.6,
+      "order": 7
+    },
+    {
+      "name": "Куриный (фарш)",
+      "unit": "кг",
+      "basePrice": 4.9,
+      "order": 8
+    },
+    {
+      "name": "Салями",
+      "unit": "кг",
+      "basePrice": 9.0,
+      "order": 9
+    },
+    {
+      "name": "Свинина (карбонад)",
+      "unit": "кг",
+      "basePrice": 6.5,
+      "order": 10
+    },
+    {
+      "name": "Свиной (фарш)",
+      "unit": "кг",
+      "basePrice": 5.9,
+      "order": 11
+    },
+    {
+      "name": "Сосиски",
+      "unit": "кг",
+      "basePrice": 4.8,
+      "order": 12
+    }
+  ],
+  "nuts-dried": [
+    {
+      "name": "Грецкий орех",
+      "unit": "кг",
+      "basePrice": 9.5,
+      "order": 1
+    },
+    {
+      "name": "Изюм светлый",
+      "unit": "кг",
+      "basePrice": 5.8,
+      "order": 2
+    },
+    {
+      "name": "Изюм тёмный",
+      "unit": "кг",
+      "basePrice": 5.8,
+      "order": 3
+    },
+    {
+      "name": "Кешью",
+      "unit": "кг",
+      "basePrice": 12.0,
+      "order": 4
+    },
+    {
+      "name": "Курага",
+      "unit": "кг",
+      "basePrice": 6.5,
+      "order": 5
+    },
+    {
+      "name": "Миндаль",
+      "unit": "кг",
+      "basePrice": 10.5,
+      "order": 6
+    },
+    {
+      "name": "Финики без косточек",
+      "unit": "кг",
+      "basePrice": 4.8,
+      "order": 7
+    },
+    {
+      "name": "Фундук",
+      "unit": "кг",
+      "basePrice": 11.0,
+      "order": 8
+    },
+    {
+      "name": "Чернослив",
+      "unit": "кг",
+      "basePrice": 6.8,
+      "order": 9
+    }
+  ],
+  "oils": [
+    {
+      "name": "Маргарин",
+      "unit": "кг",
+      "basePrice": 3.0,
+      "order": 1
+    },
+    {
+      "name": "Масло оливковое",
+      "unit": "л",
+      "basePrice": 5.2,
+      "order": 2
+    },
+    {
+      "name": "Масло подсолнечное",
+      "unit": "л",
+      "basePrice": 2.3,
+      "order": 3
+    },
+    {
+      "name": "Сало топлёное",
+      "unit": "кг",
+      "basePrice": 4.5,
+      "order": 4
+    }
+  ],
+  "packaging": [
+    {
+      "name": "Контейнер бумажный L",
+      "unit": "шт",
+      "basePrice": 0.22,
+      "order": 1
+    },
+    {
+      "name": "Контейнер бумажный S",
+      "unit": "шт",
+      "basePrice": 0.14,
+      "order": 2
+    },
+    {
+      "name": "Контейнер пластиковый L",
+      "unit": "шт",
+      "basePrice": 0.18,
+      "order": 3
+    },
+    {
+      "name": "Контейнер пластиковый S",
+      "unit": "шт",
+      "basePrice": 0.12,
+      "order": 4
+    },
+    {
+      "name": "Крышка для стакана",
+      "unit": "шт",
+      "basePrice": 0.04,
+      "order": 5
+    },
+    {
+      "name": "Пакет бумажный",
+      "unit": "шт",
+      "basePrice": 0.08,
+      "order": 6
+    },
+    {
+      "name": "Пищевая плёнка",
+      "unit": "рулон",
+      "basePrice": 1.9,
+      "order": 7
+    },
+    {
+      "name": "Салфетки бумажные",
+      "unit": "упаковка",
+      "basePrice": 0.8,
+      "order": 8
+    },
+    {
+      "name": "Стакан бумажный",
+      "unit": "шт",
+      "basePrice": 0.1,
+      "order": 9
+    },
+    {
+      "name": "Фольга пищевая",
+      "unit": "рулон",
+      "basePrice": 2.1,
+      "order": 10
+    }
+  ],
+  "sauces": [
+    {
+      "name": "Горчица",
+      "unit": "кг",
+      "basePrice": 2.2,
+      "order": 1
+    },
+    {
+      "name": "Кетчуп",
+      "unit": "кг",
+      "basePrice": 2.5,
+      "order": 2
+    },
+    {
+      "name": "Майонез",
+      "unit": "кг",
+      "basePrice": 2.8,
+      "order": 3
+    },
+    {
+      "name": "Маринад универсальный",
+      "unit": "л",
+      "basePrice": 3.0,
+      "order": 4
+    },
+    {
+      "name": "Соевый соус",
+      "unit": "л",
+      "basePrice": 3.2,
+      "order": 5
+    },
+    {
+      "name": "Соус барбекю",
+      "unit": "кг",
+      "basePrice": 4.2,
+      "order": 6
+    },
+    {
+      "name": "Соус Цезарь",
+      "unit": "кг",
+      "basePrice": 4.5,
+      "order": 7
+    },
+    {
+      "name": "Соус чесночный",
+      "unit": "кг",
+      "basePrice": 3.8,
+      "order": 8
+    },
+    {
+      "name": "Уксус столовый 9%",
+      "unit": "л",
+      "basePrice": 1.1,
+      "order": 9
+    }
+  ],
+  "seafood": [
+    {
+      "name": "Креветки",
+      "unit": "кг",
+      "basePrice": 10.0,
+      "order": 1
+    },
+    {
+      "name": "Креветки очищенные",
+      "unit": "кг",
+      "basePrice": 11.5,
+      "order": 2
+    },
+    {
+      "name": "Лосось",
+      "unit": "шт",
+      "basePrice": 35.0,
+      "order": 3
+    },
+    {
+      "name": "Лосося (филе)",
+      "unit": "кг",
+      "basePrice": 14.5,
+      "order": 4
+    },
+    {
+      "name": "Мидии",
+      "unit": "кг",
+      "basePrice": 6.9,
+      "order": 5
+    },
+    {
+      "name": "Окунь",
+      "unit": "шт",
+      "basePrice": 12.0,
+      "order": 6
+    },
+    {
+      "name": "Окуня (филе)",
+      "unit": "кг",
+      "basePrice": 11.0,
+      "order": 7
+    },
+    {
+      "name": "Сельдь солёная",
+      "unit": "кг",
+      "basePrice": 4.5,
+      "order": 8
+    },
+    {
+      "name": "Судак",
+      "unit": "шт",
+      "basePrice": 13.0,
+      "order": 9
+    },
+    {
+      "name": "Судака (филе)",
+      "unit": "кг",
+      "basePrice": 12.0,
+      "order": 10
+    },
+    {
+      "name": "Тунец",
+      "unit": "кг",
+      "basePrice": 16.0,
+      "order": 11
+    }
+  ],
+  "spices": [
+    {
+      "name": "Зира",
+      "unit": "кг",
+      "basePrice": 8.5,
+      "order": 1
+    },
+    {
+      "name": "Карри",
+      "unit": "кг",
+      "basePrice": 6.0,
+      "order": 2
+    },
+    {
+      "name": "Куркума",
+      "unit": "кг",
+      "basePrice": 6.0,
+      "order": 3
+    },
+    {
+      "name": "Лавровый лист",
+      "unit": "кг",
+      "basePrice": 4.8,
+      "order": 4
+    },
+    {
+      "name": "Паприка копчёная",
+      "unit": "кг",
+      "basePrice": 6.8,
+      "order": 5
+    },
+    {
+      "name": "Перец красный молотый",
+      "unit": "кг",
+      "basePrice": 6.5,
+      "order": 6
+    },
+    {
+      "name": "Перец чёрный горошек",
+      "unit": "кг",
+      "basePrice": 7.5,
+      "order": 7
+    },
+    {
+      "name": "Перец чёрный молотый",
+      "unit": "кг",
+      "basePrice": 8.0,
+      "order": 8
+    },
+    {
+      "name": "Соль",
+      "unit": "кг",
+      "basePrice": 0.5,
+      "order": 9
+    },
+    {
+      "name": "Чеснок сушёный",
+      "unit": "кг",
+      "basePrice": 7.2,
+      "order": 10
+    }
+  ],
+  "sweets": [
+    {
+      "name": "Ванильный сахар",
+      "unit": "кг",
+      "basePrice": 4.5,
+      "order": 1
+    },
+    {
+      "name": "Какао",
+      "unit": "кг",
+      "basePrice": 5.0,
+      "order": 2
+    },
+    {
+      "name": "Мёд",
+      "unit": "кг",
+      "basePrice": 6.8,
+      "order": 3
+    },
+    {
+      "name": "Сахар",
+      "unit": "кг",
+      "basePrice": 1.2,
+      "order": 4
+    },
+    {
+      "name": "Шоколад",
+      "unit": "кг",
+      "basePrice": 8.0,
+      "order": 5
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+.topbar {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding: 0 1rem;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 1rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 56px; // height of topbar
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 90;
+    border-bottom: 1px solid #ddd;
+    animation: slideDown 0.3s ease forwards;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav, .mobileLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link,
+.mobileLink {
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background 0.2s;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  &.active {
+    background-color: #e6f0ff;
+    color: #225;
+  }
+}
